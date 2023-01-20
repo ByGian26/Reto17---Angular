@@ -1,0 +1,45 @@
+<section class="container-sm">
+  <h1 class="text-center fw-bold">CONTACTANOS</h1>
+  <section class="form-group p-2">
+    <form [formGroup]="contactoForm" (ngSubmit)="onSubmit()">
+      <section class="m-2">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" formControlName="nombre"
+        [ngStyle]="{'border-color':nombre?.invalid && (nombre?.dirty || nombre?.touched)?'red': 'lightgray'}">
+      </section>
+      <section class="m-2">
+        <label>Correo Electronico*</label>
+        <input type="email" class="form-control" formControlName="email"
+        [ngStyle]="{'border-color':email?.invalid && (email?.dirty || email?.touched)?'red': 'lightgray'}">
+      </section>
+      <section class="m-2">
+        <label>Telefono</label>
+        <input type="text" class="form-control" formControlName="telefono" maxlength="9"
+        [ngStyle]="{'border-color':telefono?.invalid && (telefono?.dirty || telefono?.touched)?'red': 'lightgray'}">
+      </section>
+      <section class="m-2">
+        <label>Pais</label>
+        <select name=""class="form-control" formControlName="pais"
+        [ngStyle]="{'border-color':pais?.invalid && (pais?.dirty || pais?.touched)?'red': 'lightgray'}">
+          <option value="">Elige tu pais</option>
+          <option value="peru">Peru</option>
+          <option value="chile">Chile</option>
+          <option value="uruguay">Uruguay</option>
+          <option value="ecuador">Ecuador</option>
+        </select>
+      </section>
+      <section class="m-2">
+        <label>Mensaje:</label>
+        <textarea name="" cols="30" rows="10" class="form-control" formControlName="mensaje"
+        [ngStyle]="{'border-color':mensaje?.invalid && (mensaje?.dirty || mensaje?.touched)?'red': 'lightgray'}"></textarea>
+      </section>
+      <section class="m-2 form-group">
+        <button [disabled]="contactoForm.invalid"
+        class="btn btn-primary m-3" type="submit">Enviar</button>
+        <input type="button" value="Refrescar" class="btn btn-success" (click)="Refrescar()">
+      </section>
+    </form>
+    <h3 *ngIf="menj" [ngStyle]="{'color':'gray','text-align':'center'}">"Gracias 😀"</h3>
+  </section>
+</section>
+<app-vista [dato]="datos"></app-vista>
